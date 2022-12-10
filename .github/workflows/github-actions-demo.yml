@@ -10,7 +10,7 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Get OAS
         run: |
-          curl https://www.coingecko.com/api/documentations/v3/swagger.json -o swagger.json
+          curl https://petstore.swagger.io/v2/swagger.json -o swagger.json
 
       - name: Run Docker
         run: >

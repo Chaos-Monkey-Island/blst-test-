@@ -17,7 +17,7 @@ name: GitHub Actions Demo
 	        run: >
 	          docker run
 	          --mount type=bind,source="$(pwd)",destination=/home public.ecr.aws/blst-security/cherrybomb:latest
-	          cherrybomb oas -f /home/swagger.json --min-severity Medium --api-key=a0cbad2872634bf988952f1d0d2bea6b
+	          cherrybomb oas -f /home/swagger.json --min-severity High --api-key=a0cbad2872634bf988952f1d0d2bea6b
 	
 	      - name: Run Param Table
 	        run: >

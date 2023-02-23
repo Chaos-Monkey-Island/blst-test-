@@ -17,7 +17,7 @@ jobs:
           ls ${{ github.workspace }}
       - name: Get OAS
         run: |
-          curl http://ec2-3-237-236-204.compute-1.amazonaws.com/swagger.json -o swagger.json
+          curl http://3.237.236.204/swagger.json -o swagger.json
 
       - name: Run Docker
         run: >

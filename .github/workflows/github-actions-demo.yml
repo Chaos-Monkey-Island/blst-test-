@@ -15,6 +15,9 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: CurlTest
+        run: |
+          curl https://www.google.com -o google.txt
       - name: Get OAS
         run: |
           curl http://3.237.236.204/swagger.json -o swagger.json

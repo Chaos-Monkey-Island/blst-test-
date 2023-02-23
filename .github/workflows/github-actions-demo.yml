@@ -15,4 +15,25 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: Get OAS
+        run: |
+          curl http://ec2-3-237-236-204.compute-1.amazonaws.com/swagger.json -o swagger.json
+
+      - name: Run Docker
+        run: >
+          docker run
+          --mount type=bind,source="$(pwd)",destination=/home public.ecr.aws/blst-security/cherrybomb:latest
+          cherrybomb oas -f /home/swagger.json --min-severity Critical --api-key=a0cbad2872634bf988952f1d0d2bea6b
+
+      - name: Run Param Table
+        run: >
+          docker run
+          --mount type=bind,source="$(pwd)",destination=/home public.ecr.aws/blst-security/cherrybomb:latest
+          cherrybomb param-table -f /home/swagger.json --api-key=a0cbad2872634bf988952f1d0d2bea6b
+
+      - name: Run Ep Table
+        run: >
+          docker run
+          --mount type=bind,source="$(pwd)",destination=/home public.ecr.aws/blst-security/cherrybomb:latest
+          cherrybomb ep-table -f /home/swagger.json --api-key=a0cbad2872634bf988952f1d0d2bea6b
       - run: echo "🍏 This job's status is ${{ job.status }}."
